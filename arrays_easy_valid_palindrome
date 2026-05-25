@@ -1,0 +1,24 @@
+Valid Palindrome
+easy
+Consider only letters and digits from s, and treat uppercase/lowercase as equivalent.
+
+After that cleanup, check whether the resulting character sequence is symmetric (same forward and backward).
+Return true when symmetric, otherwise false.
+
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        # Step 1: Clean the string (alphanumeric only, lowercase)
+        st = []
+        for c in s:
+            if c.isalnum():
+                st.append(c.lower())
+        
+        # Step 2: Use two pointers to compare characters from both ends
+        l, r = 0, len(st) - 1
+        while l < r:
+            if st[l] != st[r]:
+                return False
+            l += 1  # Move left pointer forward
+            r -= 1  # Move right pointer backward
+        return True
