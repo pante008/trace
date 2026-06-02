@@ -1,0 +1,32 @@
+Subarray Sum Equals K
+Count how many contiguous, non-empty subarrays of nums have sum exactly k.
+
+Example  Input:  nums =  [1, 2, 3], k = 3  Output:  2
+Subarrays [1,2] (indices 0-1) and [3] (index 2) both sum to 3. There are 2 valid subarrays.
+Input:  nums =  [1,-1,0], k = 0  Output:  3
+Subarrays summing to 0: [1,-1], [-1,0], and [0]. That's 3 contiguous subarrays.
+Input:  nums =[1,1,1], k = 2  Output:  2
+Two subarrays sum to 2: [1,1] starting at index 0 and [1,1] starting at index 1.
+
+def subArray(self, nums:list[int],k:int)->int:
+        count =0
+        for i in range(len(nums)):
+              curr_sum=0
+              for j in range(i,len(nums)):
+                    curr_sum +=nums[j]
+                    if curr_sum==k:
+                          count+=1
+        return count
+
+def subArray(self, nums:list[int],k:int)->int:
+      prefix_count ={0:1}
+      curr_sum=0
+      count =0
+      for num in nums:
+          curr_sum+=num
+          count += prefix_count.get(curr_sum-k,0)
+          prefix_count[curr_sum] =prefix_count.get(curr_sum,0)
+      return count
+
+
+            
