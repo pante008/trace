@@ -1,0 +1,16 @@
+Find the Index of the First Occurrence in a String
+Find the smallest index i such that haystack[i:i+len(needle)] == needle.
+If no such index exists, return -1.
+Example  Input:haystack ="tracecode", needle = "tracex"  Output:-1
+"tracex" does not appear anywhere in "tracecode", so return -1.
+Input:haystack ="sadbutsad", needle = "sad"  Output:0
+"sad" first appears at index 0 in "sadbutsad". Return 0 as the first occurrence index.
+
+
+class Solution:
+    def strStr(self, haystack:str, needle:str)->int:
+          n,m =len(haystack), len(needle)
+          for i in n-m+1:
+              if haystack[i:i+m]==needle:
+                  return i
+          return -1
